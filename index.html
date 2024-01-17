@@ -1,0 +1,79 @@
+<html>
+<head>
+    <title>ArticleBase</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+      <nav>
+        <ul>
+          <p><li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+	    <li>
+    		<form class="search-form" align="right">
+              <input id="search-input" type="text" placeholder="Search article...">
+              <button type="submit">Search</button>
+            </form>
+          </li></p>
+        </ul>
+      </nav>
+    </header>
+    <div class="container">
+      <h1>Welcome to ArticleBase</h1>
+      <p>Your source for high-quality articles on a variety of topics.</p>
+    </div>
+    <div class="slider-container">
+      <!-- <button id="prev">Previous</button>
+      <button id="next">Next</button> -->
+      <div class="slider">
+        <img src="images/slider.jpg" alt="Slide 1">
+        <img src="images/tech.jpg" alt="Slide 2">
+        <img src="images/stayconn.jpg" alt="Slide 3">
+      </div>
+    </div>
+    <footer>
+      <p>Copyright © 2023 ArticleBase</p>
+    </footer>
+    <script>
+       var currentIndex = 0,
+        items = $('.slider img'),
+        itemAmt = items.length;
+
+      function cycleItems() {
+        var item = $('.slider img').eq(currentIndex);
+        items.hide();
+        item.css('display','inline-block');
+      }
+
+      var autoSlide = setInterval(function() {
+        currentIndex += 1;
+        if (currentIndex > itemAmt - 1) {
+          currentIndex = 0;
+        }
+        cycleItems();
+      }, 3000);
+
+      $('#next').click(function() {
+        clearInterval(autoSlide);
+        currentIndex += 1;
+        if (currentIndex > itemAmt - 1) {
+          currentIndex = 0;
+        }
+        cycleItems();
+      });
+
+      $('#prev').click(function() {
+        clearInterval(autoSlide);
+        currentIndex -= 1;
+	if (currentIndex < 0) {
+	  currentIndex = itemAmt - 1;
+      }
+	 cycleItems();
+     });
+      </script>
+
+</body>
+</html>
